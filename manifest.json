@@ -15,9 +15,9 @@
     "browser_action": {
       "default_popup": "popup.html",
       "default_icon": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
+        "16": "brain-circuit-16.png",
+        "48": "brain-circuit-32.png",
+        "128": "brain-circuit-128.png"
       }
     }
   }
