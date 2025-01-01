@@ -1,5 +1,3 @@
-
-markdown
 # Thunderbird Open WebUI Extension
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
