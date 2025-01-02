@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenWebUI Connector Settings</title>
+  <style>
+    body { padding: 20px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; }
+    input[type="text"] { width: 300px; padding: 5px; }
+  </style>
+</head>
+<body>
+  <form id="settingsForm">
+    <div class="form-group">
+      <label for="endpoint">API Endpoint:</label>
+      <input type="text" id="endpoint" placeholder="http://localhost:11434">
+    </div>
+    <div class="form-group">
+      <label for="apiKey">API Key (if required):</label>
+      <input type="password" id="apiKey">
+    </div>
+    <button type="submit">Save Settings</button>
+  </form>
+  <script src="options.js"></script>
+</body>
+</html>
