@@ -1,24 +1,31 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "OpenWebUI Connector",
     "version": "1.0",
     "description": "Connects Thunderbird to the OpenWebUI Docker container.",
+    "author": "cypheroxide",
     "permissions": [
-      "activeTab",
       "storage",
-      "http://localhost:8080/"
+      "tabs"
+    ],
+    "host_permissions": [
+      "http://localhost:11434/*",
+      "http://localhost:8080/*"
     ],
     "background": {
-      "scripts": ["background.js"],
-      "persistent": false
+      "scripts": ["background.js"]
     },
-    "browser_action": {
+    "action": {
       "default_popup": "popup.html",
       "default_icon": {
         "16": "brain-circuit-16.png",
         "48": "brain-circuit-32.png",
         "128": "brain-circuit-128.png"
       }
-    }
+    },
+      "options_ui": {
+        "page": "options.html",
+        "browser_style": true
+      }
   }
   
