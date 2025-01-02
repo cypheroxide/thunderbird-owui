@@ -1,39 +1,22 @@
 {
   "manifest_version": 2,
-  "name": "OpenWebUI Connector",
-  "description": "Connects Thunderbird to OpenWebUI and other LLM API endpoints",
+  "name": "OUWI - Quick Access",
+  "description": "This extension adds a simple button to your Spaces toolbar that opens in a new tab, providing you with one-click access to your Open WebUI Instance.",
   "version": "1.0",
   "author": "cypheroxide",
   "browser_specific_settings": {
     "gecko": {
-      "id": "@cypheroxide.openwebui.connector",
+      "id": "@cypheroxide.owui-thunderbird.qa",
       "strict_min_version": "106.0"
     }
   },
-  "permissions": [
-    "storage",
-    "http://localhost:11434/*",
-    "http://localhost:8080/*"
-  ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "icons": {
-    "16": "brain-circuit-16.png",
-    "48": "brain-circuit-32.png",
-    "128": "brain-circuit-128.png"
+    "32": "brain-circuit-32.png"
   },
-  "options_ui": {
-    "page": "options.html",
-    "browser_style": true
-  },
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "brain-circuit-16.png",
-      "48": "brain-circuit-32.png",
-      "128": "brain-circuit-128.png"
-    }
+  "background": {
+    "scripts": [
+      "redirect.js"
+    ]
   }
 }
+
