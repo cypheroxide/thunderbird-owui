@@ -35,9 +35,8 @@ Thunderbird OWUI is a flexible Thunderbird extension that allows you to connect 
 2. Create a clean build:
    ```bash
    mkdir build
-   cp -r manifest.json background.js popup.html popup.js options.html options.js brain-circuit-*.png build/
    cd build
-   zip -r ../thunderbird-owui.zip .
+   zip -r owui-thunderbird.xpi . -x "*.git*"
    ```
 
 3. Install in Thunderbird:
@@ -54,25 +53,15 @@ Thunderbird OWUI is a flexible Thunderbird extension that allows you to connect 
    - Or go to `Tools > Add-ons and Themes > Extensions > OpenWebUI Connector > Options`
 
 2. Configure your preferred endpoint:
-   - For Ollama: `http://localhost:11434`
-   - For OpenWebUI: `http://localhost:8080`
-   - For other services: Enter the appropriate API endpoint
-   - Add API key if required
-
+      - For OpenWebUI: `http://localhost:8080`
 ## Project Structure
 
 ```
 thunderbird-owui/
-├── manifest.json        # Extension configuration (Manifest V3)
-├── background.js        # Background script for API handling
-├── popup.html          # User interface
-├── popup.js            # Popup interface logic
-├── options.html        # Settings page
-├── options.js          # Settings management
+├── manifest.json        # Extension configuration (Manifest V2)
 └── icons/              # Extension icons
-    ├── brain-circuit-16.png
     ├── brain-circuit-32.png
-    └── brain-circuit-128.png
+    
 ```
 
 ## Development
@@ -80,14 +69,8 @@ thunderbird-owui/
 ### Prerequisites
 
 - Understanding of JavaScript and WebExtension APIs
-- Familiarity with LLM APIs
+- Familiarity with Docker container networks
 - Basic knowledge of Thunderbird extension development
-
-### Adding New Features
-
-1. Modify `background.js` for new API handling features
-2. Update `options.html` and `options.js` for new configuration options
-3. Enhance `popup.html` and `popup.js` for UI improvements
 
 ### Debugging
 
