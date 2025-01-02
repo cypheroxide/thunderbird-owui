@@ -3,19 +3,26 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Thunderbird](https://img.shields.io/badge/Thunderbird-Extension-orange.svg)
 
-Thunderbird OWUI is a simple Thunderbird extension that allows you to connect and send data to an OpenWebUI Docker container. This project enables seamless integration between Thunderbird and OpenWebUI's APIs.
+Thunderbird OWUI is a flexible Thunderbird extension that allows you to connect to various Large Language Model (LLM) API endpoints, including OpenWebUI, Ollama, OpenAI, and others. By default, it connects to Ollama's local API endpoint, but can be configured to work with any compatible API service.
 
 ## Features
 
-- Connect to an OpenWebUI Docker container from Thunderbird.
-- Send and receive data using a simple form in the extension's popup interface.
-- Easy to configure and extend for various OpenWebUI use cases.
+- Connect to multiple LLM API endpoints:
+  - Ollama (default: http://localhost:11434)
+  - OpenWebUI Docker container
+  - Other API services (configurable)
+- Configurable API endpoints and authentication
+- Simple, user-friendly interface
+- Supports both streaming and regular JSON responses
+- Secure API key storage
 
 ## Requirements
 
 - **Mozilla Thunderbird** (latest version recommended)
-- **Docker** with an OpenWebUI container running
-- **Node.js** (optional, for development purposes)
+- At least one of the following:
+  - **Ollama** running locally
+  - **Docker** with OpenWebUI container
+  - Access to other LLM API services
 
 ## Installation
 
@@ -25,59 +32,78 @@ Thunderbird OWUI is a simple Thunderbird extension that allows you to connect an
    cd thunderbird-owui
    ```
 
-2. Zip the extension files:
+2. Create a clean build:
    ```bash
-   zip -r thunderbird-owui.zip . -x "*.git*"
+   mkdir build
+   cp -r manifest.json background.js popup.html popup.js options.html options.js brain-circuit-*.png build/
+   cd build
+   zip -r ../thunderbird-owui.zip .
    ```
 
-3. Open Thunderbird:
-   - Go to `Tools > Add-ons and Themes > Extensions`.
-   - Click the gear icon, then choose `Debug Add-ons`.
-   - Click `Load Temporary Add-on` and select the `manifest.json` file from the repository.
+3. Install in Thunderbird:
+   - Go to `Tools > Add-ons and Themes > Extensions`
+   - Click the gear icon (⚙️)
+   - Choose `Install Add-on From File`
+   - Select the `thunderbird-owui.zip` file
 
-## Usage
+## Configuration
 
-1. Ensure your OpenWebUI Docker container is running and accessible (e.g., at `http://localhost:8080`).
-   ```bash
-   docker run -d -p 8080:8080 openwebui
-   ```
+1. After installation, access the extension settings:
+   - Click the extension icon in the toolbar
+   - Click the gear icon (⚙️) in the popup
+   - Or go to `Tools > Add-ons and Themes > Extensions > OpenWebUI Connector > Options`
 
-2. Click on the OpenWebUI Connector icon in Thunderbird to open the popup interface.
-
-3. Enter the data you want to send and click "Send to OpenWebUI."
-
-4. View the response directly in the popup interface.
+2. Configure your preferred endpoint:
+   - For Ollama: `http://localhost:11434`
+   - For OpenWebUI: `http://localhost:8080`
+   - For other services: Enter the appropriate API endpoint
+   - Add API key if required
 
 ## Project Structure
 
 ```
-my-openwebui-extension/
-├── manifest.json        # Extension metadata and permissions
-├── background.js        # Handles background tasks and API connections
-├── popup.html           # Popup interface for user interaction
-├── popup.js             # Script for popup functionality
-└── icons/               # Icons for the extension
+thunderbird-owui/
+├── manifest.json        # Extension configuration (Manifest V3)
+├── background.js        # Background script for API handling
+├── popup.html          # User interface
+├── popup.js            # Popup interface logic
+├── options.html        # Settings page
+├── options.js          # Settings management
+└── icons/              # Extension icons
+    ├── brain-circuit-16.png
+    ├── brain-circuit-32.png
+    └── brain-circuit-128.png
 ```
 
 ## Development
 
 ### Prerequisites
 
-- Familiarity with JavaScript and Thunderbird WebExtension APIs.
-- Basic knowledge of Docker.
+- Understanding of JavaScript and WebExtension APIs
+- Familiarity with LLM APIs
+- Basic knowledge of Thunderbird extension development
 
 ### Adding New Features
 
-1. Modify `background.js` to implement new API endpoints or workflows.
-2. Update `popup.html` and `popup.js` for changes in the user interface.
+1. Modify `background.js` for new API handling features
+2. Update `options.html` and `options.js` for new configuration options
+3. Enhance `popup.html` and `popup.js` for UI improvements
 
 ### Debugging
 
-- Use the browser console (`Ctrl+Shift+J` in Thunderbird) to view logs and errors.
+- Use Thunderbird's built-in debugging tools:
+  - Go to `Tools > Developer Tools > Debug Add-ons`
+  - Enable `Extension Debugging`
+  - Use the Browser Console (Ctrl+Shift+J) for logs
 
 ## Contributing
 
-Contributions are welcome! Please submit a pull request or open an issue to discuss potential changes or enhancements.
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## License
 
@@ -92,4 +118,3 @@ For questions or support, please contact:
 - **GitHub**: [https://github.com/cypheroxide](https://github.com/cypheroxide)
 - **Site**: [Hope Integrated Systems](https://www.hopeintsys.com)
 - **Blog**: [AngelSantiago.me](https://angelsantiago.me)
-```
