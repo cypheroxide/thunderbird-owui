@@ -1,31 +1,39 @@
 {
-    "manifest_version": 3,
-    "name": "OpenWebUI Connector",
-    "version": "1.0",
-    "description": "Connects Thunderbird to the OpenWebUI Docker container.",
-    "author": "cypheroxide",
-    "permissions": [
-      "storage",
-      "tabs"
-    ],
-    "host_permissions": [
-      "http://localhost:11434/*",
-      "http://localhost:8080/*"
-    ],
-    "background": {
-      "scripts": ["background.js"]
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "brain-circuit-16.png",
-        "48": "brain-circuit-32.png",
-        "128": "brain-circuit-128.png"
-      }
-    },
-      "options_ui": {
-        "page": "options.html",
-        "browser_style": true
-      }
+  "manifest_version": 2,
+  "name": "OpenWebUI Connector",
+  "description": "Connects Thunderbird to OpenWebUI and other LLM API endpoints",
+  "version": "1.0",
+  "author": "cypheroxide",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "@cypheroxide.openwebui.connector",
+      "strict_min_version": "106.0"
+    }
+  },
+  "permissions": [
+    "storage",
+    "http://localhost:11434/*",
+    "http://localhost:8080/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "brain-circuit-16.png",
+    "48": "brain-circuit-32.png",
+    "128": "brain-circuit-128.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "brain-circuit-16.png",
+      "48": "brain-circuit-32.png",
+      "128": "brain-circuit-128.png"
+    }
   }
-  
+}
